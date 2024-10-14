@@ -126,22 +126,27 @@ if __name__ == "__main__":
 
 
 import tkinter as tk
-from tkinter import messagebox, filedialog
+from tkinter import messagebox, filedialog, PhotoImage
 from web_main_nova import WebMain
 import re
+from PIL import Image, ImageTk
 
 class PhishingDetectorGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("DARP 2.0")
         self.root.configure(bg="#808080")
-        self.setup_ui()
         self.web_main = WebMain()
         self.suspicious_keywords = ["atualize agora", "urgente", "conta bloqueada", "ação imediata", "senha"]
 
+        # Criar atributo para armazenar a referência da imagem
+        self.logo_image = None
+
+        self.setup_ui()
+
     def setup_ui(self):
         # Configura a interface
-        self.window_width, self.window_height = 800, 600  # Ajuste de altura para acomodar os autores e a nova funcionalidade
+        self.window_width, self.window_height = 800, 600
         screen_width, screen_height = self.root.winfo_screenwidth(), self.root.winfo_screenheight()
         x = (screen_width / 2) - (self.window_width / 2)
         y = (screen_height / 2) - (self.window_height / 2)
@@ -159,7 +164,7 @@ class PhishingDetectorGUI:
         input_frame = tk.Frame(frame, bg="#808080")
         input_frame.pack(pady=20)
         self.url_entry = tk.Entry(input_frame, bd=1, width=80)
-        self.url_entry.pack(side=tk.TOP, padx=100, pady=10)  # Centralizando a barra de entrada
+        self.url_entry.pack(side=tk.TOP, padx=100, pady=10)
 
         # Botão de verificação de URL
         submit_button = tk.Button(frame, text="Check URL!", command=self.check_url, bg="#d1d6d6", font=("Cambria", 12))
@@ -169,11 +174,28 @@ class PhishingDetectorGUI:
         email_button = tk.Button(frame, text="Analyze Email", command=self.analyze_email_file, bg="#d1d6d6", font=("Cambria", 12))
         email_button.pack(pady=10)
 
+        # Logo do DARP
+        self.add_logo(frame)
+
         # Nomes dos autores
-        authors_label = tk.Label(frame, text="GRUPO: \nDAVI JOSÉ LUCENA LUIZ\nANA CLARA SANTOS DANDREA\n"
-                                             "RAINER TERROSO CARNEIRO\nPEDRO HENRIQUE MARINHO SALVINO",
-                                 bg="#808080", fg="white", font=("Arial", 10), pady=20)
+        authors_label = tk.Label(
+            frame, text="GRUPO: \nDAVI JOSÉ LUCENA LUIZ\nANA CLARA SANTOS DANDREA\n"
+                        "RAINER TERROSO CARNEIRO\nPEDRO HENRIQUE MARINHO SALVINO",
+            bg="#808080", fg="white", font=("Arial", 10), pady=20
+        )
         authors_label.pack()
+
+    def add_logo(self, frame):
+        # Carregar e redimensionar a imagem
+        img = Image.open("darp_logo.png")
+        img = img.resize((150, 150), Image.ANTIALIAS)
+
+        # Armazenar a imagem como atributo da classe para evitar garbage collection
+        self.logo_image = ImageTk.PhotoImage(img)
+
+        # Adicionar a imagem ao frame
+        logo_label = tk.Label(frame, image=self.logo_image, bg="#808080")
+        logo_label.pack(pady=10)
 
     def check_url(self):
         # Verifica a URL inserida e exibe o resultado
