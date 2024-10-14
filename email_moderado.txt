@@ -1,0 +1,12 @@
+From: support@bancoverificado.com
+To: user@bancoverificado.com
+Subject: Atualização de Segurança Necessária
+
+Olá,
+
+Detectamos atividades suspeitas em sua conta e precisamos que você atualize suas informações de segurança imediatamente. Por favor, clique no link abaixo para continuar:
+
+https://bancoverificado.com/seguranca
+
+Atenciosamente,
+Equipe de Suporte.

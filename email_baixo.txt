@@ -1,0 +1,10 @@
+From: support@empresa.com
+To: user@empresa.com
+Subject: Atualização de Conta
+
+Olá,
+
+Estamos apenas lembrando você de que a sua conta está ativa. Se precisar de suporte, entre em contato conosco.
+
+Atenciosamente,
+Equipe de Suporte.

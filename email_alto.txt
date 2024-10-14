@@ -1,0 +1,12 @@
+From: support@bancoverificado.com
+To: user@bancoverificado.com
+Subject: Urgente: Ação Imediata Necessária
+
+Olá,
+
+Detectamos atividades suspeitas em sua conta e precisamos que você atualize suas informações de segurança imediatamente. Por favor, clique no link abaixo para continuar:
+
+https://seguranca-bancoverificado-verificacao.com/login?user=abc123
+
+Atenciosamente,
+Equipe de Suporte.
